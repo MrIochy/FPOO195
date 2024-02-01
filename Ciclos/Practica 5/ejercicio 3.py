@@ -7,4 +7,4 @@ if numero == 0:
     print("De nada sirve la tabla del 0")
 else:
     for i in range (1,11):
-        print(numero, " * ", i, " = ", i*numero)
+        print(numero, "*", i, "=", i*numero)
