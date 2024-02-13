@@ -5,16 +5,45 @@ a. Contar número repetidos
 b. Eliminar numero repetidos
 c. Remplazar los repetidos con 0
 """
-import random 
+import random
 
-lista = [random.randint(10,20) for _ in range (30)]
-print("Los numeros generados fueron", lista)
+print("Digite una letra para elegir la función:")
+print("a. Contar número repetidos")
+print("b. Eliminar numero repetidos")
+print("c. Remplazar los repetidos con 0")
 
-numerosrepetidos = {num: lista.count(num) for num in set (lista)}
-print("Esta es la cantidad de veces que se repiten los numeros", numerosrepetidos)
+l = input("Ingrese la letra correspondiente a la función deseada: ")
+letra = l.lower()
 
-eliminarnumrep = list(set(lista))
-print("Esta es la lista sin los numeros repetidos", eliminarnumrep)
+lista = [random.randint(10, 20) for _ in range(30)]
+print("Los números generados fueron:", lista)
 
-numerosrepigualacero= [0 if lista.count(num) > 1 else num for num in lista]
-print("Esta es la lista de los numeros repetidos reemplazados por un 0", numerosrepigualacero)
+if letra == "a":
+    numeros_repetidos = {}
+    for num in set(lista):
+        numeros_repetidos[num] = lista.count(num)
+    print("Esta es la cantidad de veces que se repiten los números:", numeros_repetidos)
+
+
+elif letra == "b":
+    numeros_vistos = set()
+    nueva_lista = []
+    for num in lista:
+        if num not in numeros_vistos:
+            nueva_lista.append(num)
+            numeros_vistos.add(num)
+    print("Esta es la lista sin los números repetidos:", nueva_lista)
+
+elif letra == "c":
+    numeros_vistos = set()
+    nueva_lista = []
+    for num in lista:
+        if num in numeros_vistos:
+            nueva_lista.append(0)
+        else:
+            nueva_lista.append(num)
+            numeros_vistos.add(num)
+    print("Esta es la lista de los números repetidos reemplazados por un 0:", nueva_lista)
+
+else:
+    print("Opción no válida")
