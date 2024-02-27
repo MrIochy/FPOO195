@@ -1,4 +1,5 @@
 class Armas:
+    
     # Metodos del personaje
     def recargarArma(self, municion):
         cargador = 25 
