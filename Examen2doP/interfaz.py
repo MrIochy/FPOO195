@@ -8,7 +8,7 @@ requerimientos
 4. Cuidar el diseño de la interfaz
 """
 from tkinter import Tk, Label, Entry, Button, IntVar, Checkbutton, messagebox
-#from clase import GenerarMatricula
+from clase import GenerarMatricula
 
 class GeneradorMatriculaInterfaz:
     def __init__(self, cuadro):
@@ -37,42 +37,40 @@ class GeneradorMatriculaInterfaz:
         #----------------------------------------------------------------------------------------- 
         
         self.espacioNombre = Entry(self.cuadro)
-        self.espacioNombre.grid(row=0, column=0)
+        self.espacioNombre.grid(row=0, column=1)
 
         self.espacioApellidoPat = Entry(self.cuadro)
-        self.espacioApellidoPat.grid(row=0, column=1)
+        self.espacioApellidoPat.grid(row=1, column=1)
         
         self.espacioApellidoMat = Entry(self.cuadro)
-        self.espacioApellidoMat.grid(row=0, column=2)
+        self.espacioApellidoMat.grid(row=2, column=1)
 
         self.espacioAñoNacimiento = Entry(self.cuadro)
-        self.espacioAñoNacimiento.grid(row=0, column=3)
+        self.espacioAñoNacimiento.grid(row=3, column=1)
 
         self.espacioCarrera = Entry(self.cuadro)
-        self.espacioCarrera.grid(row=0, column=4)
+        self.espacioCarrera.grid(row=4, column=1)
         
         #-----------------------------------------------------------------------------------------
         
         self.botonGenerar = Button(self.cuadro, text="Generar Matricula", command=self.generar_matricula)
-        self.botonGenerar.grid(row=3, column=1)
+        self.botonGenerar.grid(row=5, column=0)
 
         self.espacioMatricula = Entry(self.cuadro)
-        self.espacioMatricula.grid(row=4, column=1)
+        self.espacioMatricula.grid(row=5, column=1)
 
 #----------------------------------------------------------------------------------------------------------------
-
     def generar_matricula(self):
-        longitud = int(self.espacioLongitud.get())
+        nombre  = str(self.espacioNombre.get())
+        apep  = str(self.espacioApellidoPat.get())
+        apem = str(self.espacioApellidoMat.get())
+        fecnac  = str(self.espacioAñoNacimiento.get())
+        carrera = str(self.espacioCarrera.get())
 
-        contraseña = self.generador.generar_contraseña(longitud, incluir_mayusculas, incluir_especiales)
-        self.espacioContraseña.delete(0, 'end')
-        self.espacioContraseña.insert(0, contraseña)
-
-    def comprobar_fortaleza(self):
-        contraseña = self.espacioContraseña.get()
-        fortaleza = self.generador.comprobar_fortaleza(contraseña)
-        messagebox.showinfo("Fortaleza de la contraseña", fortaleza)
-
+        matricula = self.generador.generar_matricula(nombre, apep, apem, fecnac, carrera)
+        self.espacioMatricula.delete(0, 'end')
+        self.espacioMatricula.insert(0, matricula)
+        
 if __name__ == "__main__":
     cuadro = Tk()
     GeneradorMatriculaInterfaz(cuadro)

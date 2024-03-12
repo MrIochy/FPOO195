@@ -22,23 +22,14 @@ import random
 from tkinter import messagebox
 
 class GenerarMatricula:
-    def generar_matricula(self, añocurso, añonac, nombre, apep, apem, carrera):
-        matricula = nombre + apep + apem + añonac + añocurso + carrera + random.
-        
-        messagebox.showinfo("Matricula generada", f"La matricula generada es:\n{matricula}")
+    def generar_matricula(self, nombre, apep, apem, fecnac, carrera):
+        año_actual = str(2024)[-2:]  
+        año_nacimiento = str(fecnac)[-2:]  
+        nombre_abreviado = nombre[0].upper()
+        apep_abreviado = apep[:2].upper()
+        apem_abreviado = apem[:2].upper()
+        numeros_aleatorios = ''.join(random.choices('0123456789', k=2))
+        carrera_abreviada = carrera[:3].upper()
+        matricula = (nombre_abreviado + apep_abreviado + apem_abreviado + año_nacimiento + año_actual + carrera_abreviada + numeros_aleatorios)
+        messagebox.showinfo("Matrícula generada", f"La matrícula generada es:\n{matricula}")
         return matricula
-        
-class GeneradorContraseña:
-    def generar_contraseña(self, longitud=8, incluir_mayusculas=False, incluir_especiales=False):
-        caracteres = string.ascii_lowercase
-        if incluir_mayusculas:
-            caracteres += string.ascii_uppercase
-        if incluir_especiales:
-            caracteres += string.punctuation
-        contraseña = ''.join(random.choice(caracteres) for _ in range(longitud))
-        messagebox.showinfo("Contraseña generada", f"La contraseña generada es:\n{contraseña}")
-        return contraseña
-    
-    
-import random
-from tkinter import messagebox
