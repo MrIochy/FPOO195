@@ -1,5 +1,5 @@
 from clase import CuentaBanco
-from tkinter import Tk, Label, Entry, Button, IntVar, Checkbutton, messagebox
+from tkinter import Tk, Label, Entry, Button, messagebox
 
 class Interfaz:
     def __init__(self, cuadro):
@@ -12,7 +12,7 @@ class Interfaz:
     def interfaz(self):
         self.ventana = self.cuadro
 #_________________________________
-        self.label_crear_cuenta = Label(self.ventana, text="Crear cuenta")
+        self.label_crear_cuenta = Label(self.ventana, text="Crear cuenta", font='bold')
         self.label_crear_cuenta.grid(row=0, column=0)
         self.label_numero_cuenta = Label(self.ventana, text="Numero de cuenta")
         self.label_numero_cuenta.grid(row=1, column=0)
@@ -33,7 +33,7 @@ class Interfaz:
         self.boton_crear_cuenta = Button(self.ventana, text="Crear cuenta", command=self.crear_cuenta)
         self.boton_crear_cuenta.grid(row=5, column=1)
 #_________________________________
-        self.label_consultar_saldo = Label(self.ventana, text="Consultar saldo")
+        self.label_consultar_saldo = Label(self.ventana, text="Consultar saldo", font='bold')
         self.label_consultar_saldo.grid(row=0, column=3)
         self.label_numero_cuenta_consulta = Label(self.ventana, text="Numero de cuenta a consultar")
         self.label_numero_cuenta_consulta.grid(row=1, column=3)
@@ -43,7 +43,7 @@ class Interfaz:
         self.boton_consultar_saldo.grid(row=2, column=4)
 #_________________________________
 
-        self.label_ingresar_efectivo = Label(self.ventana, text="Ingresar efectivo")
+        self.label_ingresar_efectivo = Label(self.ventana, text="Ingresar efectivo", font='bold')
         self.label_ingresar_efectivo.grid(row=0, column=6)
         self.label_numero_cuenta_ingreso = Label(self.ventana, text="Numero de cuenta")
         self.label_numero_cuenta_ingreso.grid(row=1, column=6)
@@ -56,7 +56,7 @@ class Interfaz:
         self.boton_ingresar_efectivo = Button(self.ventana, text="Ingresar efectivo", command=self.ingresar_efectivo)
         self.boton_ingresar_efectivo.grid(row=3, column=7)
 #_________________________________
-        self.label_retirar_efectivo = Label(self.ventana, text="Retirar efectivo")
+        self.label_retirar_efectivo = Label(self.ventana, text="Retirar efectivo", font='bold')
         self.label_retirar_efectivo.grid(row=5, column=6)
         self.label_numero_cuenta_retiro = Label(self.ventana, text="Numero de cuenta")
         self.label_numero_cuenta_retiro.grid(row=6, column=6)
@@ -69,7 +69,7 @@ class Interfaz:
         self.boton_retirar_efectivo = Button(self.ventana, text="Retirar efectivo", command=self.retirar_efectivo)
         self.boton_retirar_efectivo.grid(row=8, column=7)
 #_________________________________
-        self.label_depositar_otra_cuenta = Label(self.ventana, text="Depositar a otra cuenta")
+        self.label_depositar_otra_cuenta = Label(self.ventana, text="Depositar a otra cuenta", font='bold')
         self.label_depositar_otra_cuenta.grid(row=5, column=3)
         self.label_numero_cuenta_origen = Label(self.ventana, text="Numero cuenta origen")
         self.label_numero_cuenta_origen.grid(row=6, column=3)
@@ -103,7 +103,7 @@ class Interfaz:
         if numero_cuenta:
             cuenta = self.buscar_cuenta(numero_cuenta)
             if cuenta:
-                messagebox.showinfo("Saldo", f"El saldo de la cuenta {cuenta.numero} es: ${cuenta.saldo}")
+                messagebox.showinfo("Consultar Saldo", f"El saldo de la cuenta {cuenta.numero} es: ${cuenta.saldo}")
             else:
                 messagebox.showerror("Error", "Cuenta no encontrada.")
         else:
