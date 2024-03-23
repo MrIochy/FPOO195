@@ -1,6 +1,12 @@
 from tkinter import *
 from tkinter import ttk
 import tkinter as tk
+from Controlador import *
+
+objControlador= Controlador()
+
+def ejecutaInsert():
+    objControlador.insertUsuario(var1.get(),var2.get(),var3.get())
 
 # 1. Crear la ventana
 Ventana= Tk()
@@ -26,7 +32,7 @@ panel.add(pestana4, text="Editar Usuario")
 panel.add(pestana5, text="Borrar Usuario")
 
 # 5. Pestaña 1: Formulario de Insert
-Label(pestana1, text="CRUD de Usuarios", fg="blue", font=("Lato", 18)).pack()
+Label(pestana1, text="Registro de Usuarios", fg="blue", font=("Lato", 18)).pack()
 
 var1= tk.StringVar()
 Label(pestana1, text="Nombre: ").pack()
@@ -40,6 +46,6 @@ var3= tk.StringVar()
 Label(pestana1, text="Contraseña: ").pack()
 Entry(pestana1, textvariable=var3).pack()
 
-Button(pestana1, text="Guardar usuario").pack()
+Button(pestana1, text="Guardar usuario", command=ejecutaInsert).pack()
 
 Ventana.mainloop()
