@@ -38,3 +38,23 @@ class Controlador:
             conexion.commit()
             conexion.close()
             messagebox.showinfo("Exito","Datos ingresados correctamente")
+            
+    def BuscarUsuario(self, id):
+        
+        conex = self.conexion()
+
+        if(id==""):
+            messagebox.showwarning("Advertencia", "Inputs vacios")
+            conex.close()
+            
+        else:
+            try: 
+                cursor = conex.cursor()
+                sqlSelect="select * from tbUsuarios where id ="+id
+                cursor.execute(sqlSelect)
+                usuario=cursor.fetchall()
+                conex.close()
+                return usuario
+            
+            except sqlite3.OperationalError:
+                print("No se pudo ejecutar la busqueda")
