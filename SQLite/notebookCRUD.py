@@ -15,6 +15,12 @@ def BusUsuario():
     else:
         consulta.delete(1.0, END)
         consulta.insert(END, usuarioBD)
+def mostrarBaseDatos():
+    usuarios = objControlador.obtenerUsuarios()
+    for i in tabla.get_children():
+        tabla.delete(i)
+    for datos in usuarios:
+        tabla.insert("", "end", values=(datos[0], datos[1], datos[2], datos[3]))
 
 # 1. Crear la ventana
 Ventana= Tk()
@@ -69,5 +75,22 @@ Button(pestana2, text="Buscar usuario", command=BusUsuario).pack()
 Label(pestana2, text="Registrado:", fg="blue", font=("Mono",16)).pack()
 consulta = tk.Text(pestana2, height=5, width=52)
 consulta.pack()
+
+# 7. Pestaña 3: Consultar Usuarios
+Label(pestana3, text="Consultar Usuarios", fg="green", font=("Lato", 18)).pack()
+
+tabla = ttk.Treeview(pestana3, columns=("ID", "Nombre", "Correo", "Contraseña"), show="headings")
+tabla.column("ID", width=40, anchor=CENTER)
+tabla.column("Nombre", width=80)
+tabla.column("Correo", width=160)
+tabla.column("Contraseña", width=140)
+
+tabla.heading("ID", text="ID")
+tabla.heading("Nombre", text="Nombre")
+tabla.heading("Correo", text="Correo")
+tabla.heading("Contraseña", text="Contraseña")
+tabla.pack()
+
+Button(pestana3, text="Mostrar Base de Datos", command=mostrarBaseDatos, font=("Mono", 8)).pack()
 
 Ventana.mainloop()
